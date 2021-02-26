@@ -2,9 +2,8 @@
 <launch>
 
   <!-- Set arguments -->
-  <arg name="board_frame_id" default="vectornav_board_link_ned" />
-  <arg name="antenna_a_frame_id" default="antenna_a_link" />
-  <arg name="antenna_b_frame_id" default="antenna_b_link" />
+  <arg name="ned_frame_id" default="vectornav_link_ned" />
+  <arg name="enu_frame_id" default="chassis_link" />
 
   <arg name="serial_port" default="/dev/ttyUSB0" />
   <arg name="serial_baud" default="115200" />
@@ -15,9 +14,8 @@
 
   <node pkg="hal_vectornav" type="hal_vectornav" name="hal_vectornav" output="screen">
     <!-- Load parameters -->
-    <param name="board_frame_id" value="$(arg board_frame_id)" type="str" />
-    <param name="antenna_a_frame_id" value="$(arg antenna_a_frame_id)" type="str" />
-    <param name="antenna_b_frame_id" value="$(arg antenna_b_frame_id)" type="str" />
+    <param name="ned_frame_id" value="$(arg ned_frame_id)" type="str" />
+    <param name="enu_frame_id" value="$(arg enu_frame_id)" type="str" />
 
     <param name="serial_port" value="$(arg serial_port)" type="str" />
     <param name="serial_baud" value="$(arg serial_baud)" type="int" />
@@ -26,23 +24,11 @@
     <param name="fixed_imu_rate" value="$(arg fixed_imu_rate)" type="int" />
 
     <!-- Remap topics -->
-    <remap from="vectornav/imu" to="/vectornav/imu/raw/data" />
-    <remap from="vectornav/mag" to="/vectornav/imu/raw/mag" />
-    <remap from="vectornav/gnss" to="/vectornav/gnss" />
-    <remap from="vectornav/odom" to="/vectornav/odom" />
-    <remap from="vectornav/temp" to="/vectornav/temp" />
-    <remap from="vectornav/pres" to="/vectornav/pres" />
-  </node>
-
-
-  <!-- Transform  from NED to ENU frame -->
-  <node pkg="imu_transformer" type="imu_transformer_node" name="vectornav_transformer">
-    <remap from="imu_in" to="/vectornav/imu/raw" />
-    <remap from="imu_out" to="/vectornav/imu/rotated" />
-
-    <!-- TODO - check which target frame is proper one -->
-    <!-- <param name="target_frame" value="vectornav_link_enu" /> -->
-    <param name="target_frame" value="base_footprint" />
+    <remap from="~vectornav/imu/raw/data" to="/vectornav/imu/raw/data" />
+    <remap from="~vectornav/imu/rotated/data" to="/vectornav/imu/rotated/data" />
+    <remap from="~vectornav/imu/raw/mag" to="/vectornav/imu/raw/mag" />
+    <remap from="~vectornav/imu/rotated/mag" to="/vectornav/imu/rotated/mag" />
+    <remap from="~vectornav/gnss" to="/vectornav/gnss" />
   </node>
 
 </launch>

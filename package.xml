@@ -2,30 +2,26 @@
 <package>
   <name>hal_vectornav</name>
   <version>1.0.0</version>
-  <description>ROS interface for the VectorNav INS/GPS</description>
+  <description> HAL package for Vectornav VN300 sensor </description>
 
-  <maintainer email="dereck@gmail.com">Dereck Wonnacott</maintainer>
+  <maintainer email="a.bojda@agribot.eu">Aleksander Bojda</maintainer>
 
-  <license>MIT</license>
+  <license>Proprietary</license>
 
-  <!-- <url type="website">http://ros.org/wiki/vectornav</url> -->
-
-  <author email="dereck@gmail.com">Dereck Wonnacott</author>
+  <author email="a.bojda@agribot.eu">Aleksander Bojda</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>roscpp</build_depend>
   <build_depend>sensor_msgs</build_depend>
-  <build_depend>nav_msgs</build_depend>
+  <build_depend>tf</build_depend>
   <build_depend>tf2</build_depend>
-  <build_depend>tf2_geometry_msgs</build_depend>
   <build_depend>agribot_common</build_depend>
 
   <run_depend>roscpp</run_depend>
   <run_depend>sensor_msgs</run_depend>
-  <run_depend>nav_msgs</run_depend>
+  <run_depend>tf</run_depend>
   <run_depend>tf2</run_depend>
-  <run_depend>tf2_geometry_msgs</run_depend>
   <run_depend>agribot_common</run_depend>
 
 

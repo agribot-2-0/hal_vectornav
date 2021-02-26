@@ -1,19 +1,14 @@
 cmake_minimum_required(VERSION 2.8.3)
-# Compile options so compiles with ROS Kinetic
-# Future releases may want to 
 add_compile_options(-std=c++17)
-# add_compile_options(-std=c++17 -Wall -Wextra -pedantic)
 project(hal_vectornav)
 
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
 find_package(catkin REQUIRED
   roscpp
+  tf
+  tf2
+  sensor_msgs
   agribot_common
 )
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 ###################################
 ## catkin specific configuration ##
