@@ -39,14 +39,15 @@ void VectornavNode::run()
 
 void VectornavNode::loadParameters()
 {
-  ned_frame_id = ros_common_functions::getRosParam<std::string>(nh_, "ned_frame_id");
-  enu_frame_id = ros_common_functions::getRosParam<std::string>(nh_, "enu_frame_id");
+  // ned_frame_id = ros_common_functions::getRosParam<std::string>(nh_, "ned_frame_id");
+  ned_frame_id = ros_common_functions::getRosParam<std::string>("~ned_frame_id");
+  enu_frame_id = ros_common_functions::getRosParam<std::string>("~enu_frame_id");
 
-  serial_port = ros_common_functions::getRosParam<std::string>(nh_, "serial_port");
-  serial_baud = ros_common_functions::getRosParam<int>(nh_, "serial_baud");
+  serial_port = ros_common_functions::getRosParam<std::string>("~serial_port");
+  serial_baud = ros_common_functions::getRosParam<int>("~serial_baud");
 
-  async_output_rate = ros_common_functions::getRosParam<int>(nh_, "async_output_rate");
-  fixed_imu_rate = ros_common_functions::getRosParam<int>(nh_, "fixed_imu_rate");
+  async_output_rate = ros_common_functions::getRosParam<int>("~async_output_rate");
+  fixed_imu_rate = ros_common_functions::getRosParam<int>("~fixed_imu_rate");
 }
 
 void VectornavNode::registerPublishers()
